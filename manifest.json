@@ -1,0 +1,7 @@
+{
+  "name": "tpanetti-github-io",
+  "short_name": "tpanetti-github-io",
+  "description": "website",
+  "start_url": "/",
+  "display": "standalone"
+}
