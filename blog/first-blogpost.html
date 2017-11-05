@@ -1,0 +1,89 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+
+<dom-module id="first-blogpost">
+    <template>
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+             :host {
+                display: block;
+                padding: 10px;
+            }
+
+            .titleBar {
+                height: 200px;
+                background-color: #01579B;
+            }
+
+            .title {
+                color: #fff;
+                letter-spacing: -.026em;
+            }
+        </style>
+
+        <div class="titleBar vertical layout">
+            <div class="horizontal layout center-justified">
+                <h2 class="title">tpanetti.com</h2>
+            </div>
+            <div style="margin-top:-20px;" class="horizontal layout center-justified">
+                <h4 class="title">The inception and creation of tpanetti.com</h4>
+            </div>
+
+        </div>
+        <h3 style="color:#333;font-size:24px;margin-left:10px;">Inception</h3>
+        <p style="margin-left:10px;margin-right:10px;">
+            tpanetti.com was made on a weekend I was down with the flu, or the cold or something. I don't know... whatever the case,
+            that makes November 3rd, 2017 it's birthday! I spent the rest of the weekend working on the website (along with
+            playing PUBG). The programming was very straightforward, sadly my lack of an eye for design was the most difficult
+            part. I mainly created the website to challenge myself to make something somewhat visually pleasing, to have
+            a place to air my thoughts (my prose was getting lousy), and to have a place to share my creative works.
+        </p>
+        <br/>
+        <div class="horizontal layout center-justified">
+            <iron-image alt="having a brew at legal remedy" sizing="cover" style="height:500px;width:400px;" src="../files/images/blog-photos/sick.jpg"></iron-image>
+        </div>
+        <br/>
+        <div style="font-size:12px;" class="horizontal layout center-justified">
+            Sorry about being patient zero!
+        </div>
+        <h3 style="color:#333;font-size:24px;margin-left:10px;">Creation</h3>
+        <p style="margin-left:10px;margin-right:10px;">
+            tpanetti.com is a very very simple website. I bought the domain name through google-domains, and picked the cheapest hosting option (free!) which was 
+            github pages. This is where the magic of application routing comes in. You see, github pages only allows for serving a single page, but thanks to the wonders
+            of the <a href="https://www.polymer-project.org/">Polymer Library</a>, what you are viewing now is a single page! The page routing is all done in javascript,
+            throught a component called <a href="https://www.webcomponents.org/element/PolymerElements/app-route">app-route</a> mixed with <a href="https://www.webcomponents.org/element/PolymerElements/iron-pages">
+            iron-pages</a>. While single page applications with this routing is not anything new, I still find it fascinating and one of the coolest parts of this website.
+        </p>
+    </template>
+
+    <script>
+        class FirstBlogpost extends Polymer.Element {
+            static get is() {
+                return 'first-blogpost';
+            }
+            static get properties() {
+                return {};
+            }
+
+        }
+
+
+        window.customElements.define(FirstBlogpost.is, FirstBlogpost);
+    </script>
+</dom-module>

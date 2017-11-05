@@ -1,0 +1,49 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<dom-module id="home-page">
+  <template>
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      .ironImage {
+        --iron-image-width: 128px;
+        --iron-image-height:128px;
+      }
+      .welcome{
+        font-size:18px;
+      }
+    </style>
+    <div class="vertical layout center-justified">
+      <div class="horizontal layout center-justified">
+        <span class="welcome">Welcome</span>
+      </div>      
+    </div>
+    <!-- <div class="card">
+      <h2>Welcome to my wwebsite</h2>
+    </div> -->
+  </template>
+
+  <script>
+    class homePage extends Polymer.Element {
+      static get is() { return 'home-page'; }
+    }
+
+    window.customElements.define(homePage.is, homePage);
+  </script>
+</dom-module>
