@@ -95,10 +95,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
+    <app-location use-hash-as-path route="{{route}}">
     </app-location>
 
-    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
 
     <app-drawer-layout fullbleed>
@@ -112,19 +112,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div> -->
           <ibm-toolbar slot="header">
             <div main-title>
-              <a class="titleClick" href="/">tpanetti</a>
+              <a class="titleClick" href="#/">tpanetti</a>
             </div>
             <ibm-tabs spacer role="navigation">
-              <a href="/blog-page/" tabindex="-1">
+              <a href="#/blog-page/" tabindex="-1">
                 <ibm-tab>Blog</ibm-tab>
               </a>
-              <a href="/about-me/" tabindex="-1">
+              <a href="#/about-me/" tabindex="-1">
                 <ibm-tab>About Me</ibm-tab>
               </a>
             </ibm-tabs>
           </ibm-toolbar>
 
-          <iron-pages class="flex" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+          <iron-pages class="flex" selected="[[page]]" attr-for-selected="name" fallback-selection="home-page" role="main">
             <home-page name="home-page"></home-page>
             <blog-page route="[[subroute]]" name="blog-page"></blog-page>
             <about-me name="about-me"></about-me>
@@ -179,6 +179,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         '_routePageChanged(routeData.page)',
       ],
       _routePageChanged: function (page) {
+        console.log("page",page);
         this.page = page || 'home-page';
       },
 
