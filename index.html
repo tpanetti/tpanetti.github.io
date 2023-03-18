@@ -1,52 +1,37 @@
 <!--
 @Creation-date June 1st, 2021
 -->
-
 <!doctype html>
 <html lang="en">
   <head>
-    <title>thomas panetti's personal website</title>
-	<style type="text/css">
-		.header-style {
-			text-align: center;
-		}
-		
-		.vertical-spacer {
-			padding-top:10%
-		}
-		.links {
-			display: table;
-			width: 100%;
-			table-layout: fixed;
-		}
-		
-		.links a {
-			display: table-cell;
-			text-align: center;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Panetti's Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-  
-    <div>
-      <h1 class="header-style">Thomas Panetti's Personal Website</h1>
-	</div>
-	
-	<div class="vertical-spacer">
-	</div>
-    
-	<div class="links">
-      <a href="blog/blog.html">blog</a>
-	  <a href="beer/beer.html">beer</a>
-	  <a href="game/tom-game.html">game</a>
-	  <a href="https://github.com/tpanetti">github</a>
-	  <a href="https://twitter.com/tpanetti95">twitter</a>
-	  <a href="https://www.last.fm/user/havepie">last.fm</a>
-	  <a href="https://www.goodreads.com/user/show/124927129-thomas-panetti">goodreads</a>
+    <canvas id="game-of-life"></canvas>
+    <header class="header-style">
+      <h1>Thomas Panetti's Personal Website</h1>
+    </header>
+    <main class="container">
+      <div class="content-wrapper">
+        <nav class="links">
 
-
-    </div>
+          <a href="about/about.html">About Me</a>
+          <a href="blog/blog.html">Blog</a>
+          <!-- Hiding beer page for now because it's not finished -->
+          <!-- <a href="beer/beer.html">Beer</a> -->
+          <a href="game/tom-game.html">Simple Raycasting 2d Game</a>
+          <a href="https://github.com/tpanetti" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="data/Resume.pdf">Resume/CV</a>
+          <a href="https://twitter.com/tpanetti95" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://www.last.fm/user/havepie" target="_blank" rel="noopener noreferrer">Last.fm</a>
+          <a href="https://www.goodreads.com/user/show/124927129-thomas-panetti" target="_blank" rel="noopener noreferrer">Goodreads</a>
+        </nav>
+      </div>
+    </main>
+  <script src="game-of-life.js"></script>
   </body>
-
-
 </html>
+
