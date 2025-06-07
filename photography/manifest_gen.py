@@ -29,6 +29,8 @@ manifest = []
 paginator = s3.get_paginator('list_objects_v2')
 for page in paginator.paginate(Bucket=BUCKET, Prefix=''):
     for obj in page.get('Contents', []):
+        if 'thumb' in obj['Key']:
+            continue
         key = obj['Key']
 
         # Skip non-photo files if desired
@@ -39,12 +41,23 @@ for page in paginator.paginate(Bucket=BUCKET, Prefix=''):
         m = re.match(r'(\d{4})/([^/]+)/([^/]+)$', key)
         if m:
             year, location, filename = m.groups()
+
+            # Insert _thumb before file extension
+            parts = filename.rsplit('.', 1)
+            if len(parts) == 2:
+                thumb_filename = f"{parts[0]}_thumb.{parts[1]}"
+            else:
+                thumb_filename = filename + "_thumb"
+
+            thumb_key = f"{year}/{location}/{thumb_filename}"
+
             entry = {
                 "year": year,
                 "location": location,
                 "file": filename,
                 "path": key,
-                "url": f"https://{CDN_DOMAIN}/{key}"
+                "url": f"https://{CDN_DOMAIN}/{key}",
+                "thumb_url": f"https://{CDN_DOMAIN}/{thumb_key}"
             }
             manifest.append(entry)
         else:
