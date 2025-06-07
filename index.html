@@ -1,47 +1,248 @@
 <!--
 @Creation-date June 1st, 2021
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-33SDVZSL80"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-33SDVZSL80"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-33SDVZSL80');
+      gtag("config", "G-33SDVZSL80");
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Panetti's Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Thomas Panetti - Software Engineer and Creative Developer. View my portfolio, projects, and professional links."
+    />
+    <meta name="author" content="Thomas Panetti" />
+    <meta
+      name="keywords"
+      content="Thomas Panetti, tpanetti, Software Engineer, Web Developer, Creative Developer, Portfolio, GitHub, Photography, Full Stack Developer, JavaScript, TypeScript, React, Node.js"
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://tpanetti.github.io/" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="preload" href="game/game-of-life.js" as="script" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tpanetti.github.io/" />
+    <meta
+      property="og:title"
+      content="Thomas Panetti - Software Engineer • Creative Developer"
+    />
+    <meta
+      property="og:description"
+      content="Software Engineer and Creative Developer. View my portfolio, projects, and professional links."
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content="https://tpanetti.github.io/" />
+    <meta
+      property="twitter:title"
+      content="Thomas Panetti - Software Engineer • Creative Developer"
+    />
+    <meta
+      property="twitter:description"
+      content="Software Engineer and Creative Developer. View my portfolio, projects, and professional links."
+    />
+
+    <title>Thomas Panetti - Software Engineer • Creative Developer</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Thomas Panetti",
+        "alternateName": "tpanetti",
+        "jobTitle": "Software Engineer",
+        "description": "Software Engineer and Creative Developer",
+        "url": "https://tpanetti.github.io/",
+        "sameAs": [
+          "https://github.com/tpanetti",
+          "https://twitter.com/tpanetti95",
+          "https://www.last.fm/user/havepie",
+          "https://www.goodreads.com/user/show/124927129-thomas-panetti"
+        ],
+        "knowsAbout": [
+          "Software Engineering",
+          "Web Development",
+          "Photography",
+          "Creative Development"
+        ],
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Educational Institution"
+        }
+      }
+    </script>
   </head>
   <body>
     <canvas id="game-of-life"></canvas>
     <header class="header-style">
       <h1>Thomas Panetti</h1>
+      <p class="tagline">Software Engineer</p>
     </header>
     <main class="container">
       <div class="content-wrapper">
         <nav class="links">
+          <section class="link-group">
+            <h3 class="group-title">Professional</h3>
+            <div class="group-items">
+              <a href="about/about.html" class="featured-link">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">About Me</span>
+                  <span class="link-desc">Learn about my background</span>
+                </div>
+              </a>
 
-          <a href="about/about.html">About Me</a>
-          <!-- Hiding the blog until I have content -->
-          <!-- <a href="blog/blog.html">Blog</a> -->
-          <!-- Hiding beer page for now because it's not finished -->
-          <!-- <a href="beer/beer.html">Beer</a> -->
-          <a href="game/tom-game.html">Wasm Raycasting Demo</a>
-          <a href="https://github.com/tpanetti" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="data/Resume.pdf">Resume/CV</a>
-          <a href="https://twitter.com/tpanetti95" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://www.last.fm/user/havepie" target="_blank" rel="noopener noreferrer">Last.fm</a>
-          <a href="https://www.goodreads.com/user/show/124927129-thomas-panetti" target="_blank" rel="noopener noreferrer">Goodreads</a>
+              <a
+                href="data/Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">Resume/CV</span>
+                  <span class="link-desc">View my professional experience</span>
+                </div>
+              </a>
+
+              <a
+                href="https://github.com/tpanetti"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">GitHub</span>
+                  <span class="link-desc">View my code and projects</span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <section class="link-group">
+            <h3 class="group-title">Creative</h3>
+            <div class="group-items">
+              <a href="photography/photography.html">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">Photography</span>
+                  <span class="link-desc">Visual storytelling portfolio</span>
+                </div>
+              </a>
+
+              <a href="game/tom-game.html">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M21,6H3A1,1 0 0,0 2,7V17A1,1 0 0,0 3,18H21A1,1 0 0,0 22,17V7A1,1 0 0,0 21,6M20,16H4V8H20V16Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">Wasm Raycasting Demo</span>
+                  <span class="link-desc">Interactive 3D graphics demo</span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <section class="link-group">
+            <h3 class="group-title">Social</h3>
+            <div class="group-items">
+              <a
+                href="https://twitter.com/tpanetti95"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">@tpanetti95</span>
+                  <span class="link-desc">Follow my updates</span>
+                </div>
+              </a>
+
+              <a
+                href="https://www.last.fm/user/havepie"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M10.8,17.1L9,11.3L11.6,10.6L13.4,16.4C13.8,17.8 14.8,18 15.7,18C17.3,18 18.2,16.3 18.2,14.1C18.2,10.1 16.5,6.3 13.1,6.3C11.3,6.3 10.3,7.3 10.3,8.8C10.3,9.7 10.6,10.4 11.3,10.4C11.9,10.4 12.1,10 12.1,9.5C12.1,9.1 11.9,8.7 11.9,8.3C11.9,7.9 12.2,7.6 12.7,7.6C14,7.6 14.9,9.9 14.9,12.2C14.9,14.1 14.4,15.3 13.5,15.3C12.9,15.3 12.6,14.9 12.3,13.9L10.8,17.1M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">Last.fm</span>
+                  <span class="link-desc">Music listening history</span>
+                </div>
+              </a>
+
+              <a
+                href="https://www.goodreads.com/user/show/124927129-thomas-panetti"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V4A2,2 0 0,0 18,2M18,20H6V4H18V20Z"
+                  />
+                </svg>
+                <div class="link-content">
+                  <span class="link-title">Goodreads</span>
+                  <span class="link-desc">Reading list and reviews</span>
+                </div>
+              </a>
+            </div>
+          </section>
         </nav>
       </div>
     </main>
-  <script src="game/game-of-life.js"></script>
+    <script src="game/game-of-life.js"></script>
   </body>
 </html>
-

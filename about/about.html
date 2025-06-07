@@ -1,32 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Thomas Panetti</title>
-    <link rel="stylesheet" href="../styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Thomas Panetti</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Thomas Panetti",
+        "alternateName": "tpanetti",
+        "jobTitle": "Software Engineer",
+        "description": "Software Engineer and Creative Developer",
+        "url": "https://tpanetti.github.io/",
+        "sameAs": [
+          "https://github.com/tpanetti",
+          "https://twitter.com/tpanetti95",
+          "https://www.last.fm/user/havepie",
+          "https://www.goodreads.com/user/show/124927129-thomas-panetti"
+        ],
+        "knowsAbout": [
+          "Software Engineering",
+          "Web Development",
+          "Photography",
+          "Creative Development"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <canvas id="game-of-life"></canvas>
     <header class="header-style">
       <h1>About Thomas Panetti</h1>
     </header>
-    <main class="about-container">
-      <section class="about-section">
-        <img class="about-image" src="../data/tom.png" alt="Thomas Panetti">
-        <div class="about-text">
-          <h2>Hello World!</h2>
-          <p>
-            I'm Thomas Panetti, I am a passionate Software Engineer with a background in
-            Full Stack development, System Architecture, and Machine Learning. I enjoy working 
-            on challenging projects, diving deep on complicated subjects, and learning new skills.
-          </p>
-          <p>
-            When I'm not coding, I enjoy spending time with my friends and family, exploring
-            new places, hiking, brewing beer, reading, and listening to music.
-          </p>
+    <main class="container">
+      <div class="content-wrapper">
+        <div class="about-container">
+          <section class="about-section">
+            <img
+              class="about-image"
+              src="../data/tom.png"
+              alt="Thomas Panetti"
+            />
+            <div class="about-text">
+              <h2 style="color: #00ffff; margin-top: 0">Hello World!</h2>
+              <p>
+                I'm Thomas Panetti, I am a passionate Software Engineer with a
+                background in Full Stack development, System Architecture, and
+                Machine Learning. I enjoy working on challenging projects,
+                diving deep on complicated subjects, and learning new skills.
+              </p>
+              <p>
+                When I'm not coding, I enjoy spending time with my friends and
+                family, exploring new places, hiking, photography, brewing beer,
+                reading, and listening to music.
+              </p>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </main>
+    <script src="../game/game-of-life.js"></script>
   </body>
 </html>
-
