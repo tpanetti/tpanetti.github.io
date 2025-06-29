@@ -264,10 +264,22 @@ function changeDirection() {
   worm.direction = directions[Math.floor(Math.random() * directions.length)];
 }
 
+// Touch control variables
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+const minSwipeDistance = 30;
+
 // Player control functions
 function enablePlayerControl() {
   isPlayerControlled = true;
   document.addEventListener("keydown", handleKeyPress);
+
+  // Add touch controls for mobile
+  document.addEventListener("touchstart", handleTouchStart, { passive: false });
+  document.addEventListener("touchend", handleTouchEnd, { passive: false });
+
   // Make canvas fully visible for better gameplay
   canvas.style.opacity = "1";
   canvas.style.filter = "none";
@@ -276,6 +288,11 @@ function enablePlayerControl() {
 function disablePlayerControl() {
   isPlayerControlled = false;
   document.removeEventListener("keydown", handleKeyPress);
+
+  // Remove touch controls
+  document.removeEventListener("touchstart", handleTouchStart);
+  document.removeEventListener("touchend", handleTouchEnd);
+
   // Restore background appearance
   canvas.style.opacity = "0.15";
   canvas.style.filter = "hue-rotate(180deg) saturate(0.7)";
@@ -301,6 +318,61 @@ function handleKeyPress(event) {
     case "arrowright":
       worm.direction = { x: 1, y: 0 };
       break;
+  }
+}
+
+// Touch control handlers
+function handleTouchStart(event) {
+  if (!isPlayerControlled) return;
+
+  event.preventDefault();
+  const touch = event.touches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}
+
+function handleTouchEnd(event) {
+  if (!isPlayerControlled) return;
+
+  event.preventDefault();
+  const touch = event.changedTouches[0];
+  touchEndX = touch.clientX;
+  touchEndY = touch.clientY;
+
+  handleSwipe();
+}
+
+function handleSwipe() {
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+
+  // Check if swipe distance is significant enough
+  if (
+    Math.abs(deltaX) < minSwipeDistance &&
+    Math.abs(deltaY) < minSwipeDistance
+  ) {
+    return;
+  }
+
+  // Determine swipe direction based on largest movement
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe
+    if (deltaX > 0) {
+      // Swipe right
+      worm.direction = { x: 1, y: 0 };
+    } else {
+      // Swipe left
+      worm.direction = { x: -1, y: 0 };
+    }
+  } else {
+    // Vertical swipe
+    if (deltaY > 0) {
+      // Swipe down
+      worm.direction = { x: 0, y: 1 };
+    } else {
+      // Swipe up
+      worm.direction = { x: 0, y: -1 };
+    }
   }
 }
 

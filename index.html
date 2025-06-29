@@ -307,16 +307,61 @@
           ">
             <h3 style="margin: 0 0 10px 0; color: #ff3232;">🐛 Riding The Worm</h3>
             <p style="margin: 5px 0; font-size: 14px;">Use <strong>WASD</strong> or <strong>Arrow Keys</strong> to control</p>
+            <p style="margin: 5px 0; font-size: 14px;">On mobile: <strong>Swipe</strong> to change direction</p>
             <p style="margin: 5px 0; font-size: 14px;">Eat the white cells to grow!</p>
-            <p style="margin: 5px 0; font-size: 12px; opacity: 0.7;">Press <strong>ESC</strong> to exit</p>
+            <p style="margin: 5px 0; font-size: 12px; opacity: 0.7;">Press <strong>ESC</strong> or tap exit button</p>
           </div>
         `;
         document.body.appendChild(overlay);
 
+        // Add exit button
+        const exitButton = document.createElement("button");
+        exitButton.id = "worm-exit-btn";
+        exitButton.innerHTML = "×";
+        exitButton.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: rgba(255, 50, 50, 0.8);
+          color: white;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          font-size: 24px;
+          font-weight: bold;
+          cursor: pointer;
+          z-index: 1001;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(10px);
+          transition: all 0.2s ease;
+        `;
+
+        exitButton.addEventListener("click", exitWormMode);
+        exitButton.addEventListener("mouseover", () => {
+          exitButton.style.background = "rgba(255, 50, 50, 1)";
+          exitButton.style.transform = "scale(1.1)";
+        });
+        exitButton.addEventListener("mouseout", () => {
+          exitButton.style.background = "rgba(255, 50, 50, 0.8)";
+          exitButton.style.transform = "scale(1)";
+        });
+
+        document.body.appendChild(exitButton);
+
         // Auto-hide instructions after 5 seconds
         setTimeout(() => {
-          if (document.getElementById("worm-instructions")) {
-            document.getElementById("worm-instructions").style.opacity = "0.5";
+          const instructions = document.getElementById("worm-instructions");
+          if (instructions) {
+            instructions.style.transition = "opacity 0.5s ease-out";
+            instructions.style.opacity = "0";
+            setTimeout(() => {
+              if (instructions && instructions.parentNode) {
+                instructions.remove();
+              }
+            }, 500); // Remove after fade completes
           }
         }, 5000);
       }
@@ -331,6 +376,12 @@
         const instructions = document.getElementById("worm-instructions");
         if (instructions) {
           instructions.remove();
+        }
+
+        // Remove exit button
+        const exitButton = document.getElementById("worm-exit-btn");
+        if (exitButton) {
+          exitButton.remove();
         }
 
         // Disable worm control
