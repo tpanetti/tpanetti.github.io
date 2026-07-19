@@ -35,33 +35,49 @@
   </head>
   <body>
     <canvas id="game-of-life"></canvas>
-    <header class="header-style">
-      <h1>About Thomas Panetti</h1>
-    </header>
-    <main class="container">
-      <div class="content-wrapper">
-        <div class="about-container">
-          <section class="about-section">
-            <img
-              class="about-image"
-              src="../data/tom.png"
-              alt="Thomas Panetti"
-            />
-            <div class="about-text">
-              <h2>Hello World!</h2>
-              <p>
-                I'm Thomas Panetti, I am a passionate Software Engineer with a
-                background in Full Stack development, System Architecture, and
-                Machine Learning. I enjoy working on challenging projects,
-                diving deep on complicated subjects, and learning new skills.
-              </p>
-              <p>
-                When I'm not coding, I enjoy spending time with my friends and
-                family, exploring new places, hiking, photography, brewing beer,
-                reading, and listening to music.
-              </p>
-            </div>
-          </section>
+
+    <nav class="site-nav">
+      <a href="../">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"
+          />
+        </svg>
+        Index
+      </a>
+      <span class="nav-title">About</span>
+    </nav>
+
+    <main class="page">
+      <header class="page-head">
+        <p class="hero-kicker"><span class="dot">●</span> 01 / about</p>
+        <h1 class="page-title">About Me</h1>
+      </header>
+
+      <div class="about-panel">
+        <figure class="about-figure">
+          <img
+            class="about-image"
+            src="../data/tom.png"
+            alt="Thomas Panetti"
+          />
+          <figcaption class="about-figcaption">
+            fig. 01 — the maintainer
+          </figcaption>
+        </figure>
+        <div class="about-text">
+          <h2>Hello World!</h2>
+          <p>
+            I'm Thomas Panetti, I am a passionate Software Engineer with a
+            background in Full Stack development, System Architecture, and
+            Machine Learning. I enjoy working on challenging projects,
+            diving deep on complicated subjects, and learning new skills.
+          </p>
+          <p>
+            When I'm not coding, I enjoy spending time with my friends and
+            family, exploring new places, hiking, photography, brewing beer,
+            reading, and listening to music.
+          </p>
         </div>
       </div>
     </main>
