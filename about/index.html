@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-33SDVZSL80"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-33SDVZSL80");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Thomas Panetti</title>
+    <link rel="canonical" href="https://tpanetti.com/about/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Thomas Panetti",
+        "alternateName": "tpanetti",
+        "jobTitle": "Software Engineer",
+        "description": "Software Engineer and Creative Developer",
+        "url": "https://tpanetti.com/",
+        "sameAs": [
+          "https://github.com/tpanetti",
+          "https://twitter.com/tpanetti95",
+          "https://www.last.fm/user/havepie",
+          "https://www.goodreads.com/user/show/124927129-thomas-panetti"
+        ],
+        "knowsAbout": [
+          "Software Engineering",
+          "Web Development",
+          "Photography",
+          "Creative Development"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="game-of-life"></canvas>
+
+    <nav class="site-nav">
+      <a href="../">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"
+          />
+        </svg>
+        Index
+      </a>
+      <span class="nav-title">About</span>
+    </nav>
+
+    <main class="page">
+      <header class="page-head">
+        <p class="hero-kicker"><span class="dot">●</span> 01 / about</p>
+        <h1 class="page-title">About Me</h1>
+      </header>
+
+      <div class="about-panel">
+        <figure class="about-figure">
+          <img
+            class="about-image"
+            src="../data/tom.png"
+            alt="Thomas Panetti"
+          />
+          <figcaption class="about-figcaption">
+            fig. 01 — the maintainer
+          </figcaption>
+        </figure>
+        <div class="about-text">
+          <h2>Hello World!</h2>
+          <p>
+            I'm Thomas Panetti, I am a passionate Software Engineer with a
+            background in Full Stack development, System Architecture, and
+            Machine Learning. I enjoy working on challenging projects,
+            diving deep on complicated subjects, and learning new skills.
+          </p>
+          <p>
+            When I'm not coding, I enjoy spending time with my friends and
+            family, exploring new places, hiking, photography, brewing beer,
+            reading, and listening to music.
+          </p>
+        </div>
+      </div>
+    </main>
+    <script src="../game/game-of-life.js"></script>
+  </body>
+</html>

@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
-  <rect width="100%" height="100%" fill="#0f0f0f" rx="8"></rect>
-  <text x="50%" y="55%" font-family="sans-serif" font-size="32" fill="white" text-anchor="middle" dominant-baseline="middle">TP</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Living Grid: a glider on the lattice -->
+  <rect width="64" height="64" fill="#0c120e"/>
+  <g fill="#4df0a5">
+    <rect x="25" y="8"  width="14" height="14"/>
+    <rect x="41" y="24" width="14" height="14"/>
+    <rect x="9"  y="40" width="14" height="14"/>
+    <rect x="25" y="40" width="14" height="14"/>
+    <rect x="41" y="40" width="14" height="14"/>
+  </g>
 </svg>

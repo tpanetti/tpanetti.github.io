@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-33SDVZSL80"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-33SDVZSL80");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Photography gallery by Thomas Panetti" />
+    <meta
+      name="keywords"
+      content="Thomas Panetti, tpanetti, photography, travel photography"
+    />
+    <meta name="author" content="Thomas Panetti" />
+    <meta name="robots" content="index, follow" />
+    <title>Photography - Thomas Panetti</title>
+    <link rel="canonical" href="https://tpanetti.com/photography/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": "Thomas Panetti Photography Gallery",
+        "description": "Travel photography collection by Thomas Panetti",
+        "creator": {
+          "@type": "Person",
+          "name": "Thomas Panetti",
+          "alternateName": "tpanetti",
+          "url": "https://tpanetti.com/"
+        },
+        "url": "https://tpanetti.com/photography/",
+        "about": ["Travel Photography", "Architecture"]
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="site-nav">
+      <a href="../">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"
+          />
+        </svg>
+        Index
+      </a>
+      <span class="nav-title">Photography</span>
+    </nav>
+
+    <div class="gallery-container">
+      <header class="page-head">
+        <p class="hero-kicker"><span class="dot">●</span> 04 / photography</p>
+        <h1 class="page-title">Photography</h1>
+      </header>
+      <div id="gallery-content">
+        <div class="loading">Loading gallery...</div>
+      </div>
+    </div>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-close">&times;</div>
+      <img
+        id="lightbox-img"
+        class="lightbox-img"
+        src=""
+        alt="Full size photo"
+      />
+    </div>
+
+    <script>
+      // Load and display gallery
+      async function loadGallery() {
+        try {
+          const response = await fetch("./manifest.json");
+          const photos = await response.json();
+
+          // Group photos by location and year
+          const grouped = photos.reduce((acc, photo) => {
+            const key = `${photo.location}_${photo.year}`;
+            if (!acc[key]) {
+              acc[key] = {
+                location: photo.location,
+                year: photo.year,
+                photos: [],
+              };
+            }
+            acc[key].photos.push(photo);
+            return acc;
+          }, {});
+
+          // Sort groups by year (newest first) then by location
+          const sortedGroups = Object.values(grouped).sort((a, b) => {
+            if (a.year !== b.year) {
+              return b.year - a.year;
+            }
+            return a.location.localeCompare(b.location);
+          });
+
+          renderGallery(sortedGroups);
+        } catch (error) {
+          console.error("Error loading gallery:", error);
+          document.getElementById("gallery-content").innerHTML =
+            '<div class="loading">Error loading gallery. Please try again later.</div>';
+        }
+      }
+
+      function renderGallery(groups) {
+        const container = document.getElementById("gallery-content");
+        container.innerHTML = "";
+
+        groups.forEach((group, groupIndex) => {
+          const section = document.createElement("div");
+          section.className = "location-section";
+          section.style.animationDelay = `${groupIndex * 0.1}s`;
+
+          section.innerHTML = `
+            <div class="location-header">
+              <h3 class="location-title">${group.location}</h3>
+              <div class="location-year">${group.year}</div>
+              <div class="photo-count">${group.photos.length} photo${
+            group.photos.length !== 1 ? "s" : ""
+          }</div>
+            </div>
+            <div class="photo-grid">
+              ${group.photos
+                .map(
+                  (photo, photoIndex) => `
+                <div class="photo-item" data-url="${
+                  photo.url
+                }" style="animation-delay: ${
+                    groupIndex * 0.1 + photoIndex * 0.05
+                  }s">
+                  <img
+                    class="photo-img"
+                    src="${photo.thumb_url}"
+                    alt="${photo.location} ${photo.year}"
+                    loading="lazy"
+                  >
+                  <div class="photo-info">
+                    <div class="photo-location">${photo.location}, ${
+                    photo.year
+                  }</div>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          `;
+
+          container.appendChild(section);
+        });
+
+        // Add click handlers for lightbox
+        setupLightbox();
+      }
+
+      function setupLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".lightbox-close");
+
+        // Open lightbox
+        document.querySelectorAll(".photo-item").forEach((item) => {
+          item.addEventListener("click", () => {
+            const url = item.dataset.url;
+            const img = item.querySelector(".photo-img");
+            lightboxImg.src = url;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+
+        closeBtn.addEventListener("click", closeLightbox);
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        // Keyboard navigation
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && lightbox.classList.contains("active")) {
+            closeLightbox();
+          }
+        });
+      }
+
+      // Load gallery when page loads
+      document.addEventListener("DOMContentLoaded", loadGallery);
+    </script>
+  </body>
+</html>
